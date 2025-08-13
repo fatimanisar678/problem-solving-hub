@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int f(int i, int j, string &s, string &t, vector<vector<int>> &dp) {
+    if (i < 0 || j < 0) return 0;
+
+    if (dp[i][j] != -1) return dp[i][j];
+
+    if (s[i] == t[j]) {
+        return dp[i][j] = 1 + f(i - 1, j - 1, s, t, dp);
+    } else {
+        return dp[i][j] = max(f(i, j - 1, s, t, dp), f(i - 1, j, s, t, dp));
+    }
+}
+
+int lcs(string s, string t) {
+    int n = s.size();
+    int m = t.size();
+    vector<vector<int>> dp(n, vector<int>(m, -1));
+    return f(n - 1, m - 1, s, t, dp);
+}
+
+int main() {
+    string s = "abcde";
+    string t = "ace";
+
+    cout << "String 1: " << s << endl;
+    cout << "String 2: " << t << endl;
+
+    int length = lcs(s, t);
+    cout << "Length of LCS: " << length << endl;
+
+    return 0;
+}

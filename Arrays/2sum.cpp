@@ -10,7 +10,7 @@ class Solution{
         {
             int a= a[0];
             int extra= target-a;
-            if(mpp.find(extra)!== mpp.end())
+        if(mpp.find(extra)!== mpp.end())
             {
                 return "Yes";
             }

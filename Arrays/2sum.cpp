@@ -1,20 +1,22 @@
 #include<iostream>
 #include<vector>
+#include<map>
 using namespace std;
 class Solution{
  public:
-     string twosumexists(vector<int> &a , int target)
+     string twosumexists(vector<int> &v , int target)
      {
-        map<int , int>mpp;
+        map<int,int>mpp;
+        int n = v.size();
         for(int i=0; i<n ;i++)
         {
-            int a= a[0];
+            int a= v[0];
             int extra= target-a;
-        if(mpp.find(extra)!== mpp.end())
+        if(mpp.find(extra)!= mpp.end())
             {
                 return "Yes";
             }
-            mpp[a[i]]=i;
+            mpp[v[i]]=i;
 
 
         }
@@ -23,4 +25,4 @@ class Solution{
 
 
 
-}
+};
